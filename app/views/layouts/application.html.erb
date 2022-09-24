@@ -3,7 +3,6 @@
   <head>
     <title>Bookers2Ver2</title>
     <script src="https://kit.fontawesome.com/022185b137.js" crossorigin="anonymous"></script>
-  </head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -21,32 +20,66 @@
 
     <div class="navbar-nav ml-auto">
     <% if user_signed_in? %>
-    <li><i class="fas fa-home"><%= link_to "Home", user_path(current_user) %></li>
-    <li><i class="fas fa-users"><%= link_to "Users", users_path %></li>
-    <li><i class="fas fa-book-open"><%= link_to "Books", books_path %></li>
-    <li><i class="fa-solid fa-right-from-bracket"><%= link_to "log out", destroy_user_session_path, method: :delete %></li>
+
+    <li>
+    <%= link_to user_path(current_user),class: "nav-link text-light" do %>
+    <i class="fas fa-home" ></i>Home
+    <% end %>
+    </li>
+    <li>
+    <%= link_to users_path ,class: "nav-link text-light" do %>
+    <i class="fas fa-users" ></i>Users
+    <% end %>
+    </li>
+    <li>
+    <%= link_to books_path ,class: "nav-link text-light" do  %>
+    <i class="fas fa-book-open" ></i>Books
+    <% end %>
+    </li>
+    <li>
+    <%= link_to destroy_user_session_path, method: :delete,class: "nav-link text-light"  do %>
+    <i class="fas fa-sign-out-alt " ></i>Log out
+    <% end %>
+    </li>
+
+
 
     <% else %>
-    <i class="fas fa-home"></i><%= link_to "Home", root_path %>
-    <i class="fas fa-link"></i><%= link_to "About", homes_about_path %>
-    <i class="fas fa-user-plus"></i><%= link_to "Sign up", new_user_registration_path %>
-    <i class="fas fa-sign-in-alt"></i><%= link_to "Log in", new_user_session_path %>
-
+    <li>
+    <%= link_to root_path, class: "nav-link text-light"  do %>
+    <i class="fas fa-home" ></i>Home
+    <% end %>
+    </li>
+    <li>
+    <%= link_to home_about_path, class: "nav-link text-light"  do %>
+    <i class="fas fa-link" ></i>About
+    <% end %>
+    </li>
+    <li>
+    <%= link_to new_user_registration_path, class: "nav-link text-light"  do %>
+    <i class="fas fa-user-plus" ></i>Sign up
+    <% end %>
+    </li>
+    <li>
+    <%= link_to new_user_session_path, class: "nav-link text-light"  do %>
+    <i class="fas fa-sign-in-alt"></i>Log in
+    <% end %>
+    </li>
     <% end %>
     </div>
     </div>
     </div>
     </header>
-    <body>
     <main>
     <p class="notice"><%= notice %></p>
-  
+
     <%= yield %>
+    </main>
 
 
 
 
-  <hooter>
+  <footer>
     <div class="container mt-5">
   	<div class="row">
     <div class="mx-auto">
@@ -55,4 +88,4 @@
     </div>
     </div>
     </nav>
-  </hooter>
+  </footer>

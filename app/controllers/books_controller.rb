@@ -7,7 +7,9 @@ class BooksController < ApplicationController
  def show
      @book=Book.find(params[:id])
      @user=@book.user
-     
+     @newbook=Book.new
+ 
+
  end
  def edit
      @book=Book.find(params[:id])
@@ -37,7 +39,7 @@ class BooksController < ApplicationController
    else
     @books = Book.all
     render :index
-   end 
+   end
  end
 
   def destroy
@@ -51,6 +53,5 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
 
-  
 end
 
